@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
         // 점프할 때를 제외하고 y값을 초기화하여 수직 이동을 방지
-        
+        dir.y = _rigidbody.velocity.y;
 
         _rigidbody.velocity = dir;
     }
