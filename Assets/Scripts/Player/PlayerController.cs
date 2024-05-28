@@ -7,6 +7,14 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private Vector2 curMovementInput;
 
+    [Header("Look")]
+    public Transform cameraContainer;
+    public float minXLook; // 카메라가 아래로 바라볼 수 있는 최소 각도
+    public float maxXLook; // 카메라가 위로 바라볼 수 있는 최대 각도
+    private float camCurXRot; // 현재 카메라의 x축 회전 값
+    public float lookSensitivity; // 마우스 감도
+    private Vector2 mouseDelta; // 마우스 이동 값
+
     private Rigidbody _rigidbody;
 
     private PlayerAnimation anim;
@@ -25,7 +33,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // 물리 업데이트마다 Move 메서드 호출
         Move();
+    }
+
+    private void LateUpdate()
+    {
+        // 모든 업데이트가 끝난 후 카메라 움직임 처리
+        CameraLook();
     }
 
     // 실질적인 움직임을 담당하는 함수
@@ -38,6 +53,19 @@ public class PlayerController : MonoBehaviour
         
 
         _rigidbody.velocity = dir;
+    }
+
+    void CameraLook()
+    {
+        // 마우스 y 이동 값에 따라 카메라의 X축 회전 값 조정
+        camCurXRot += mouseDelta.y * lookSensitivity;
+        // X축 회전 값을 최소 및 최대 각도로 클램프
+        camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
+        // 카메라 컨테이너의 로컬 회전 값을 설정
+        cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+
+        // 마우스 x 이동 값에 따라 플레이어의 Y축 회전 값 조정
+        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
     }
 
     // Input System으로 입력 받는 OnMove 함수
@@ -55,5 +83,11 @@ public class PlayerController : MonoBehaviour
             curMovementInput = Vector2.zero;
             anim.OutMoveAnime();
         }
+    }
+
+    // Input System으로 입력 받는 OnLook 함수
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        mouseDelta = context.ReadValue<Vector2>();
     }
 }
