@@ -5,7 +5,9 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public float jumpPower;
     private Vector2 curMovementInput;
+    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -59,8 +61,10 @@ public class PlayerController : MonoBehaviour
     {
         // 마우스 y 이동 값에 따라 카메라의 X축 회전 값 조정
         camCurXRot += mouseDelta.y * lookSensitivity;
+
         // X축 회전 값을 최소 및 최대 각도로 클램프
         camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
+
         // 카메라 컨테이너의 로컬 회전 값을 설정
         cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
@@ -89,5 +93,37 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started && IsGrounded())
+        {
+            _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+        }
+    }
+
+    bool IsGrounded()
+    {
+        // 4 개의 레이를 정의하여 플레이어 주변을 확인
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+        };
+
+        // 모든 레이를 순회하며 레이캐스르를 실행
+        for(int i = 0; i < rays.Length; i++)
+        {
+            // 레이캐스트가 groundLayerMask와 충돌하면 true를 반환
+            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
