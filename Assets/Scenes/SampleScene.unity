@@ -1062,7 +1062,7 @@ MonoBehaviour:
   curValue: 0
   startValue: 400
   maxValue: 500
-  passiveValue: -10
+  passiveValue: 10
   uiBar: {fileID: 335646782}
 --- !u!1 &1724740049
 GameObject:
@@ -1080,6 +1080,7 @@ GameObject:
   - component: {fileID: 1724740058}
   - component: {fileID: 1724740057}
   - component: {fileID: 1724740056}
+  - component: {fileID: 1724740059}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1296,6 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  condition: {fileID: 0}
 --- !u!114 &1724740058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,6 +1310,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704dca71967df40409ca01d1c4afa55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1724740059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724740049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da16b3e13837c654db022c44d74e4b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCondition: {fileID: 0}
+  noHungerHealthDecay: 2
 --- !u!1 &1743982470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc54eb3b3b11d634e8ad59fb66304f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 1443209232}
+  hunger: {fileID: 1537811438}
+  stamina: {fileID: 475778418}
 --- !u!4 &115331035004086722
 Transform:
   m_ObjectHideFlags: 0
