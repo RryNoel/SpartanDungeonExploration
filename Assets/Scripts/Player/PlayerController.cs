@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Started && IsGrounded())
         {
+            // 리지드바디에 위쪽으로 점프 힘을 가함
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
