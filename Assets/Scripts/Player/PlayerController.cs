@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float jumpPower;
+    public float jumpPadPower;
     private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
+    public LayerMask JumpLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -148,5 +150,37 @@ public class PlayerController : MonoBehaviour
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("JumpObject") && IsJumpPaded())
+        {
+            _rigidbody.AddForce(Vector2.up * jumpPadPower, ForceMode.Impulse);
+        }
+    }
+
+    bool IsJumpPaded()
+    {
+        // 4 개의 레이를 정의하여 플레이어 주변을 확인
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+        };
+
+        // 모든 레이를 순회하며 레이캐스르를 실행
+        for (int i = 0; i < rays.Length; i++)
+        {
+            // 레이캐스트가 groundLayerMask와 충돌하면 true를 반환
+            if (Physics.Raycast(rays[i], 0.1f, JumpLayerMask))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
