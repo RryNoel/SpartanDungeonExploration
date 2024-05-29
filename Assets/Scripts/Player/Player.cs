@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public ItemData itemData;
     public Action addItem;
 
+    public Transform dropPosition;
+
     private void Awake()
     {
         // CharacterManager의 인스턴스에 이 Player 인스턴스를 설정

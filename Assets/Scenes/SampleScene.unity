@@ -366,6 +366,7 @@ MonoBehaviour:
   slots: []
   inventoryWindow: {fileID: 179195584}
   slotPanel: {fileID: 1775524706}
+  dropPosition: {fileID: 0}
   selectedItemName: {fileID: 278948449}
   selectedItemDescription: {fileID: 629910816}
   selectedStatName: {fileID: 1548343894}
@@ -3882,6 +3883,37 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1425009924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1432073260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432073261}
+  m_Layer: 10
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432073261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432073260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1724740050}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1443209228
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,6 +4967,7 @@ Transform:
   m_Children:
   - {fileID: 280638220291564234}
   - {fileID: 1282349510}
+  - {fileID: 1432073261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1724740051
@@ -5083,7 +5116,19 @@ MonoBehaviour:
     m_ActionId: f2882844-8c59-4c1e-a148-f2d0e324cbb9
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1724740056}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5b9ebccb-28bb-4f93-b587-8fa2788615e4
     m_ActionName: Player/Inventory[/Keyboard/tab]
   - m_PersistentCalls:
@@ -5128,6 +5173,7 @@ MonoBehaviour:
   minXLook: -85
   maxXLook: 85
   lookSensitivity: 0.1
+  canLook: 1
 --- !u!114 &1724740057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5143,6 +5189,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   condition: {fileID: 0}
   itemData: {fileID: 0}
+  dropPosition: {fileID: 1432073261}
 --- !u!114 &1724740058
 MonoBehaviour:
   m_ObjectHideFlags: 0
