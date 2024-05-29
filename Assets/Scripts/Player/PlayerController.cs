@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,12 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 마우스 감도
     private Vector2 mouseDelta; // 마우스 이동 값
     public bool canLook = true;
+
+    public bool isUsePotion;
+    public GameObject potionDuration;
+    private Coroutine speedBoostCoroutine;
+    [SerializeField]
+    private UIUsePotion usePotion;
 
     public Action inventory;
     private Rigidbody _rigidbody;
@@ -182,5 +189,38 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void ApplySpeedBoost(float duration)
+    {
+        // 기존에 실행 중인 스피드 부스트 코루틴이 있다면 중지
+        if (speedBoostCoroutine != null)
+        {
+            StopCoroutine(speedBoostCoroutine);
+            ResetSpeedBoost();
+        }
+
+        // 새로운 스피드 부스트 코루틴을 시작하고 저장
+        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine(duration));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float duration)
+    {
+        isUsePotion = true;
+        potionDuration.SetActive(true);
+        moveSpeed *= 2;
+
+        usePotion.UseTime = duration;
+        yield return new WaitForSeconds(duration);
+
+        ResetSpeedBoost();
+        StopCoroutine(SpeedBoostCoroutine(duration));
+    }
+
+    private void ResetSpeedBoost()
+    {
+        isUsePotion = false;
+        potionDuration.SetActive(false);
+        moveSpeed /= 2;
     }
 }

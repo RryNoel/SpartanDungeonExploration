@@ -9,7 +9,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Resource
   - Water
   - UI
   - Interactable
@@ -21,8 +21,8 @@ TagManager:
   - Soil
   - HardFloor
   - WaterWall
-  - Resource
-  - JumpPad
+  - Jump
+  - 
   - 
   - 
   - 
