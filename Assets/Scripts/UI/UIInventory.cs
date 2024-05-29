@@ -40,7 +40,8 @@ public class UIInventory : MonoBehaviour
         inventoryWindow.SetActive(false);
         slots = new ItemSlot[slotPanel.childCount];
 
-        for(int i = 0; i < slots.Length; i++)
+        // 슬롯 배열을 설정
+        for (int i = 0; i < slots.Length; i++)
         {
             slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
             slots[i].index = i;
@@ -50,6 +51,7 @@ public class UIInventory : MonoBehaviour
         ClearSelectedItemWindow();
     }
 
+    // 선택된 아이템 정보를 초기화
     void ClearSelectedItemWindow()
     {
         selectedItemName.text = string.Empty;
@@ -63,6 +65,7 @@ public class UIInventory : MonoBehaviour
         dropButton.SetActive(false);
     }
 
+    // 인벤토리 창을 토글
     public void Toggle()
     {
         if (IsOpen())
@@ -74,13 +77,17 @@ public class UIInventory : MonoBehaviour
             inventoryWindow.SetActive(true);
         }
     }
+
+    // 인벤토리 창이 열려 있는지 확인
     public bool IsOpen()
     {
         return inventoryWindow.activeInHierarchy;
     }
 
+    // 아이템을 추가하는 메서드
     void AddItem()
     {
+        // 플레이어가 획득한 아이템 데이터를 가져옴
         ItemData data = CharacterManager.Instance.Player.itemData;
 
         if (data.canStack)
@@ -88,6 +95,7 @@ public class UIInventory : MonoBehaviour
             ItemSlot slot = GetItemStack(data);
             if (slot != null)
             {
+                // 스택 가능한 슬롯이 있으면 수량을 증가시키고 UI를 업데이트
                 slot.quantity++;
                 UpdateUI();
                 CharacterManager.Instance.Player.itemData = null;
@@ -95,10 +103,12 @@ public class UIInventory : MonoBehaviour
             }
         }
 
+        // 스택 가능한 슬롯이 없으면 빈 슬롯을 찾음
         ItemSlot emptySlot = GetEmptySlot();
 
         if(emptySlot != null)
         {
+            // 빈 슬롯이 있으면 아이템을 추가하고 수량을 1로 설정한 후 UI를 업데이트
             emptySlot.item = data;
             emptySlot.quantity = 1;
             UpdateUI();
@@ -110,9 +120,11 @@ public class UIInventory : MonoBehaviour
         CharacterManager.Instance.Player.itemData = null;
     }
 
+    // UI를 업데이트하는 메서드
     private void UpdateUI()
     {
-        for(int i = 0; i < slots.Length; i++)
+        // 모든 슬롯을 순회하며 슬롯이 비어 있는지 여부에 따라 설정 및 클리어
+        for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item != null)
             {
@@ -125,6 +137,7 @@ public class UIInventory : MonoBehaviour
         }
     }
 
+    // 스택 가능한 아이템 슬롯을 찾는 메서드
     ItemSlot GetItemStack(ItemData data)
     {
         for(int i = 0; i < slots.Length; i++)
@@ -137,6 +150,7 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
+    // 빈 슬롯을 찾는 메서드
     ItemSlot GetEmptySlot()
     {
         for(int i = 0; i < slots.Length; i++)
@@ -149,10 +163,12 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
+    // 아이템을 버리는 메서드
     void ThrowItem(ItemData data)
     {
         Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
+
 
     public void SelectItem(int index)
     {
@@ -179,6 +195,7 @@ public class UIInventory : MonoBehaviour
         dropButton.SetActive(true);
     }
 
+    // 사용 버튼을 클릭했을 때 실행되는 메서드
     public void OnUseButton()
     {
         if(selectedItem.type == ItemType.Consumable)
@@ -199,12 +216,14 @@ public class UIInventory : MonoBehaviour
         }
     }
 
+    // 드롭 버튼을 클릭했을 때 실행되는 메서드
     public void OnDropButton()
     {
         ThrowItem(selectedItem);
         RemoveSelectedItem();
     }
 
+    // 선택된 아이템을 제거하는 메서드
     void RemoveSelectedItem()
     {
         slots[selectedItemIndex].quantity--;
