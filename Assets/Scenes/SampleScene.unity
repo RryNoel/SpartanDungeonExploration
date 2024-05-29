@@ -457,7 +457,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 269681766}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 179195589}
+        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
+        m_MethodName: OnUnEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &269681766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,9 +1123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 370840965}
   - component: {fileID: 370840967}
-  - component: {fileID: 370840966}
   m_Layer: 10
-  m_Name: Camera
+  m_Name: EquipCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,14 +1145,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282349510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &370840966
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370840964}
-  m_Enabled: 1
 --- !u!20 &370840967
 Camera:
   m_ObjectHideFlags: 0
@@ -4184,7 +4187,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1530199272}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 179195589}
+        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
+        m_MethodName: OnEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1530199272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5062,6 +5077,7 @@ GameObject:
   - component: {fileID: 1724740056}
   - component: {fileID: 1724740059}
   - component: {fileID: 1724740060}
+  - component: {fileID: 1724740061}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -5264,6 +5280,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c2655704-dd47-48ea-ab4b-bec75d9204cd
     m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1724740061}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: adf8c766-2850-4d22-b56c-44eb8e40c924
+    m_ActionName: Player/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -5305,6 +5337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   condition: {fileID: 0}
+  equip: {fileID: 0}
   itemData: {fileID: 0}
   dropPosition: {fileID: 1432073261}
 --- !u!114 &1724740058
@@ -5352,6 +5385,20 @@ MonoBehaviour:
     m_Bits: 64
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 1080724477}
+--- !u!114 &1724740061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724740049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64ff43afed69cb48859541a59717f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curEquip: {fileID: 0}
+  equipParent: {fileID: 370840965}
 --- !u!1 &1743982470
 GameObject:
   m_ObjectHideFlags: 0
