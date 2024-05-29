@@ -11,6 +11,7 @@ public class EquipTool : Equip
 
     [Header("Resource Gathering")]
     public bool doesGatherResources;
+    public ResourceType resourceType;
 
     [Header("Combat")]
     public bool doesDealDamage;
@@ -50,7 +51,10 @@ public class EquipTool : Equip
         {
             if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
             {
-                resource.Gather(hit.point, hit.normal);
+                if (resource.resourceType == resourceType)
+                {
+                    resource.Gather(hit.point, hit.normal);
+                }
             }
         }
     }

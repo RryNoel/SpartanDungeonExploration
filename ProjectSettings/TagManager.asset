@@ -3,16 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - JumpObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Resource
   - Water
   - UI
-  - 
-  - 
+  - Interactable
+  - Equip
   - PostProcessing
   - Floor
   - Player
@@ -20,7 +21,7 @@ TagManager:
   - Soil
   - HardFloor
   - WaterWall
-  - 
+  - Jump
   - 
   - 
   - 

@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ResourceType
+{
+    Tree,
+    Rock
+}
+
 public class Resource : MonoBehaviour
 {
+    public ResourceType resourceType;
+
     public ItemData itemToGive;
     public int quantityPerHit = 1;
     public int capacy;
