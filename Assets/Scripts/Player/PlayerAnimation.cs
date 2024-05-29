@@ -8,8 +8,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private static readonly int isWalking = Animator.StringToHash("isWalking");
 
-    private readonly float magnituteThreshold = 0.5f;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
