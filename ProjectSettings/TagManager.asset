@@ -11,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Interactable
+  - Equip
   - PostProcessing
   - Floor
   - Player
@@ -20,7 +20,7 @@ TagManager:
   - Soil
   - HardFloor
   - WaterWall
-  - 
+  - Resource
   - 
   - 
   - 

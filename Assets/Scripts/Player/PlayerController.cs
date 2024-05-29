@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,9 @@ public class PlayerController : MonoBehaviour
     private float camCurXRot; // 현재 카메라의 x축 회전 값
     public float lookSensitivity; // 마우스 감도
     private Vector2 mouseDelta; // 마우스 이동 값
+    public bool canLook = true;
 
+    public Action inventory;
     private Rigidbody _rigidbody;
 
     private PlayerAnimation anim;
@@ -41,8 +44,11 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        // 모든 업데이트가 끝난 후 카메라 움직임 처리
-        CameraLook();
+        if(canLook)
+        {
+            // 모든 업데이트가 끝난 후 카메라 움직임 처리
+            CameraLook();
+        }
     }
 
     // 실질적인 움직임을 담당하는 함수
@@ -104,6 +110,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
     bool IsGrounded()
     {
         // 4 개의 레이를 정의하여 플레이어 주변을 확인
@@ -126,5 +141,12 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }
