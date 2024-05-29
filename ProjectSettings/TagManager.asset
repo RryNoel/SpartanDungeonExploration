@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - JumpObject
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -12,8 +11,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Interactable
-  - Equip
+  - 
+  - 
   - PostProcessing
   - Floor
   - Player
@@ -21,8 +20,8 @@ TagManager:
   - Soil
   - HardFloor
   - WaterWall
-  - Resource
-  - JumpPad
+  - 
+  - 
   - 
   - 
   - 
