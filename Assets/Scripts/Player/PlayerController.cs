@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAnimation anim;
 
+    [Header("ThirdCamera")]
+    private bool isFirstPersonView = true;
+    public Transform thirdPersonCameraPosition; // 3인칭 카메라 위치
+    public Transform firstPersonCameraPosition; // 1인칭 카메라 위치
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -116,6 +121,14 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
+    }
+
+    public void OnThirdCamera(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            SwitchCameraView();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -268,5 +281,22 @@ public class PlayerController : MonoBehaviour
         isUsePotion = false;
         potionDuration.SetActive(false);
         moveSpeed = curSpeed;
+    }
+
+    void SwitchCameraView()
+    {
+        if (isFirstPersonView)
+        {
+            // 3인칭 시점으로 전환
+            cameraContainer.position = thirdPersonCameraPosition.position;
+            cameraContainer.rotation = thirdPersonCameraPosition.rotation;
+        }
+        else
+        {
+            // 1인칭 시점으로 전환
+            cameraContainer.position = firstPersonCameraPosition.position;
+            cameraContainer.rotation = firstPersonCameraPosition.rotation;
+        }
+        isFirstPersonView = !isFirstPersonView;
     }
 }
