@@ -21,18 +21,19 @@ Unity를 활용한 3D 게임
 - Language : C#
 - Engine : Unity 2022.3.17f1
 - IDE : Visual Studio 2022
-- Framework : .NET 8.0
+- Framework : .NET 6.0
 
 # 📌 주요 기술
 
 ## Singleton
 
-여러가지 필드와 자료들을 중복해서 생성하지 않고 여러 스크립트에서 공유하기위해 정적 객체를 활용.
+여러가지 필드와 자료들을 중복해서 생성하지 않고 여러 스크립트에서 공유하기 위해 정적 객체를 활용.
 CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사용
 
 ## Input System
 
 ![Animation](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/8219589c-5ee5-4b23-a008-8898e51389ff)
+![InvokeUnityEvents](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/c75d1d92-2c75-4246-a26c-f950f84f602b)
 
 인풋 시스템을 활용해서 플레이어의 움직임을 구현, Invoke Unity 이벤트 사용
 
@@ -49,14 +50,14 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 ![raycast](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/64ecc927-a81f-45bc-a9d6-9355aba441ae)
 
 
-리지디바디 포스모드를 사용해서 플레이어의 점프와 점프대를 구현
-레이와 레이케스트를 이용해서 땅에 닿아 있을 때만 점프할 수 있게 구현
+리지디바디 포스모드를 사용해서 플레이어의 점프와 점프대를 구현   
+레이와 레이케스트를 이용해서 땅에 닿아 있을 때만 점프할 수 있게 구현   
 아이템의 정보를 Ray와 Raycast를 활용해서 UI에 아이템 정보를 표시
 
 ## Inventory and Item, ScriptableObject
 
-![scriptableObject](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/b7a7184b-e383-4cfc-ac66-ac241c49c77c)
 ![inventory](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/eab95a34-2f3d-42d8-a22a-59e3b8daa4bb)
+![scriptableObject](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/b7a7184b-e383-4cfc-ac66-ac241c49c77c)
 
 강의 내용을 바탕으로 스크립터블 오브젝트를 이용해서 아이템 관리
 곡괭이 아이템과 스피드 포션 아이템 추가
@@ -74,6 +75,5 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 ![AssetMissing](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/a0495bb5-330b-4c01-b871-6db5e978b9a9)
 ![githubError](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/45dee6f1-e675-4c6e-88bb-ee429eda031b)
 
-에셋과 gitignore에 관련해서 여러가지 오류 및 에셋 누락이 발생
-
+에셋과 gitignore에 관련해서 여러가지 오류 및 에셋 누락이 발생   
 해결 방안으로는 에셋을 다시 import해서 해결함.
