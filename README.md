@@ -57,7 +57,7 @@ Unity를 활용한 3D 게임
 강의 내용을 바탕으로 스크립터블 오브젝트를 이용해서 아이템 관리   
 곡괭이 아이템과 스피드 포션 아이템 추가
 
-## Couroutine
+## Coroutine
 
 ![coroutine](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/3fd2c963-d088-4d5f-86b4-59cd36e347e8)
 ![coroutine2](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/c21a5a6e-e26b-482b-bfd0-0c19c39dbfce)
