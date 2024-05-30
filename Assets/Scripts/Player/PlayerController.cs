@@ -267,6 +267,6 @@ public class PlayerController : MonoBehaviour
     {
         isUsePotion = false;
         potionDuration.SetActive(false);
-        moveSpeed /= 2;
+        moveSpeed = curSpeed;
     }
 }
