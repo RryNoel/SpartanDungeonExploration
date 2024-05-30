@@ -25,11 +25,6 @@ Unity를 활용한 3D 게임
 
 # 📌 주요 기술
 
-## Singleton
-
-여러가지 필드와 자료들을 중복해서 생성하지 않고 여러 스크립트에서 공유하기 위해 정적 객체를 활용.
-CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사용
-
 ## Input System
 
 ![Animation](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/8219589c-5ee5-4b23-a008-8898e51389ff)
@@ -59,7 +54,7 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 ![inventory](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/eab95a34-2f3d-42d8-a22a-59e3b8daa4bb)
 ![scriptableObject](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/b7a7184b-e383-4cfc-ac66-ac241c49c77c)
 
-강의 내용을 바탕으로 스크립터블 오브젝트를 이용해서 아이템 관리
+강의 내용을 바탕으로 스크립터블 오브젝트를 이용해서 아이템 관리   
 곡괭이 아이템과 스피드 포션 아이템 추가
 
 ## Couroutine
@@ -69,6 +64,32 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 
 스피드 증가 아이템과 대쉬 기능을 코루틴으로 구현
 
+# 📌 선택 기능 정리
+
+## 추가 UI
+
+### UI 디자인 업데이트
+
+![UIDesign](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/98640bc2-d0f8-45d1-984d-1a63c8aca225)
+
+### 포션 사용시 왼쪽 하단에 오버레이 등장
+
+![potionUI](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/3c597052-6ad6-47fe-bec9-c42ed23a2697)
+
+### 대쉬시 스태미나 감소
+
+![run](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/0f5068f7-86b0-4174-8399-7635bd6cc843)
+
+## 3인칭 카메라 시점
+
+### F5를 누르게 되면 3인칭 카메라로 체인지
+
+![image](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/25715af1-9879-4904-b946-4d420a2706be)
+
+## 움직이는 플랫폼
+
+![platform](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/b1af1ef1-e3ee-4525-afe5-b51a76323170)
+
 
 # ⚒️ 트러블 슈팅
 
@@ -77,3 +98,11 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 
 에셋과 gitignore에 관련해서 여러가지 오류 및 에셋 누락이 발생   
 해결 방안으로는 에셋을 다시 import해서 해결함.
+
+# 📌 에셋 정보
+
+## 무료 에셋
+City People Lite
+
+## 유료 에셋
+Survival Engine
