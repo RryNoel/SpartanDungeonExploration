@@ -224,6 +224,18 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.AddForce(Vector2.up * jumpPadPower, ForceMode.Impulse);
         }
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(collision.transform);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(null);
+        }
     }
 
     bool IsJumpPaded()
