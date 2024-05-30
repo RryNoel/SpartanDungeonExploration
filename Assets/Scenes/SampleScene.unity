@@ -6639,6 +6639,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: adf8c766-2850-4d22-b56c-44eb8e40c924
     m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1724740056}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c0fc5496-15f8-4c06-bb17-7da9b41404b8
+    m_ActionName: Player/Dash[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -6659,6 +6675,9 @@ MonoBehaviour:
   moveSpeed: 4
   jumpPower: 80
   jumpPadPower: 300
+  jumpStamina: 10
+  runStamina: 0.3
+  canRun: 0
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 31543

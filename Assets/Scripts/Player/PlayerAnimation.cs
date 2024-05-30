@@ -7,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator animator;
 
     private static readonly int isWalking = Animator.StringToHash("isWalking");
+    private static readonly int isRunning = Animator.StringToHash("isRunning");
 
     private void Awake()
     {
@@ -21,5 +22,15 @@ public class PlayerAnimation : MonoBehaviour
     public void OutMoveAnime()
     {
         animator.SetBool(isWalking, false);
+    }
+
+    public void OnRunAnim()
+    {
+        animator.SetBool(isRunning, true);
+    }
+
+    public void OutRunAnime()
+    {
+        animator.SetBool(isRunning, false);
     }
 }

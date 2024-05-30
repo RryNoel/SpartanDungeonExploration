@@ -9,9 +9,15 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpPower;
     public float jumpPadPower;
+    public float jumpStamina;
+    public float runStamina;
+    private float curSpeed;
+    private float runSpeed;
+    public bool canRun;
     private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
     public LayerMask JumpLayerMask;
+    private Coroutine runCoroutine;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -43,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         // 마우스 커서를 화면 중앙에 고정
         Cursor.lockState = CursorLockMode.Locked;
+        curSpeed = moveSpeed;
+        runSpeed = moveSpeed * 2;
     }
 
     private void FixedUpdate()
@@ -116,6 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             // 리지드바디에 위쪽으로 점프 힘을 가함
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            CharacterManager.Instance.Player.condition.UseStamina(jumpStamina);
         }
     }
 
@@ -126,6 +135,43 @@ public class PlayerController : MonoBehaviour
             inventory?.Invoke();
             ToggleCursor();
         }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Performed && CanRun())
+        {
+            anim.OnRunAnim();
+            moveSpeed = runSpeed;
+            runCoroutine = StartCoroutine(RunStamina());
+
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            StopRunning();
+        }
+    }
+
+    bool CanRun()
+    {
+        return CharacterManager.Instance.Player.condition.uiCondition.stamina.uiBar.fillAmount > 0.01f;
+    }
+
+    private IEnumerator RunStamina()
+    {
+        while (CanRun())
+        {
+            CharacterManager.Instance.Player.condition.UseStamina(runStamina);
+            yield return null;
+        }
+        StopRunning();
+    }
+
+    private void StopRunning()
+    {
+        anim.OutRunAnime();
+        moveSpeed = curSpeed;
+        StopCoroutine(runCoroutine);
     }
 
     bool IsGrounded()
