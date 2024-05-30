@@ -45,7 +45,7 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 
 ## Rigidbody ForceMode, Ray, Raycast
 
-![jumpPad](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/9ed48903-6662-46d6-811a-d506f71c2344)
+![JumpPad](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/db7f4b3b-f150-4e8f-a26d-62ca943af541)
 ![raycast](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/64ecc927-a81f-45bc-a9d6-9355aba441ae)
 
 
