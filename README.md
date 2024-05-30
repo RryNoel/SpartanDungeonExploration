@@ -1,4 +1,3 @@
-# SpartanDungeonExploration
 # SpartanDungeonExploration 스파르타 던전 탐험
 
 유니티 숙련 개인 과제
@@ -76,4 +75,5 @@ CharacterManager를 싱글톤화 함으로써 다양한 스크립트에서 사�
 ![githubError](https://github.com/RryNoel/SpartanDungeonExploration/assets/97824309/45dee6f1-e675-4c6e-88bb-ee429eda031b)
 
 에셋과 gitignore에 관련해서 여러가지 오류 및 에셋 누락이 발생
+
 해결 방안으로는 에셋을 다시 import해서 해결함.
